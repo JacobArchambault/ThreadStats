@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
+﻿using System.Threading;
+using static System.Console;
+using static System.Threading.Thread;
 
 namespace ThreadStats
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("***** Primary Thread stats *****\n");
+            WriteLine("***** Primary Thread stats *****\n");
 
             // Obtain and name the current thread.
-            Thread primaryThread = Thread.CurrentThread;
+            Thread primaryThread = CurrentThread;
             primaryThread.Name = "ThePrimaryThread";
 
             // Show details of hosting AppDomain/Context.
-            Console.WriteLine("Name of current AppDomain: {0}", Thread.GetDomain().FriendlyName);
-            Console.WriteLine("ID of current Context: {0}", Thread.CurrentContext.ContextID);
+            WriteLine($"Name of current AppDomain: {GetDomain().FriendlyName}");
+            WriteLine($"ID of current Context: {CurrentContext.ContextID}");
 
             // Print out some stats about this thread.
-            Console.WriteLine("Thread Name: {0}", primaryThread.Name);
-            Console.WriteLine("Has thread started?: {0}", primaryThread.IsAlive);
-            Console.WriteLine("Priority Level: {0}", primaryThread.Priority);
-            Console.WriteLine("Thread State: {0}", primaryThread.ThreadState);
-            Console.ReadLine();
+            WriteLine($"Thread Name: {primaryThread.Name}");
+            WriteLine($"Has thread started?: {primaryThread.IsAlive}");
+            WriteLine($"Priority Level: {primaryThread.Priority}");
+            WriteLine($"Thread State: {primaryThread.ThreadState}");
+            ReadLine();
         }
     }
 }
